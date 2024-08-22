@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Button } from '@mui/material';
 
 interface SearchButtonProps {
   onClick: () => void;
@@ -7,19 +7,18 @@ interface SearchButtonProps {
 
 const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
   return (
-    <button 
-        onClick={onClick} 
-        style={{ 
-            padding: '10px 20px', 
-            cursor: 'pointer', 
-            background: '#3c99c8',
-            color: 'white',
-            borderRadius: '0.5rem',
-            border: '1px solid',
-            marginTop: '1rem'
-        }}>
-      Buscar Pokemons
-    </button>
+    <Button 
+      variant="contained" 
+      color="info" 
+      onClick={onClick}
+      sx={{ 
+        padding: '10px 20px', 
+        borderRadius: '0.5rem',
+        marginTop: '1rem',
+      }}
+    >
+      Search
+    </Button>
   );
 };
 
