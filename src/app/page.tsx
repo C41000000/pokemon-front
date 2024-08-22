@@ -36,6 +36,7 @@ const App: React.FC = () => {
           sprites: { front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png' }
         }
       ];
+      // let response = fetch('apirurlqntemainda')
 
       setPokemons(response);
     } catch (error) {

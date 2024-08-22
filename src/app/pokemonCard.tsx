@@ -32,16 +32,24 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
             margin: '16px', 
             width: '17rem', 
             background: 'white',
-            borderRadius: '1rem'
+            borderRadius: '1rem',
+            minHeight: '35vh'
         }}>
       <h2>{pokemon.name}</h2>
       <img src={pokemon.sprites.front_default} alt={pokemon.name} style={{ width: '100px', height: '100px' }} />
-      <h3>Movimentos:</h3>
-      <ul style={{listStyle: 'none'}}>
-        {pokemon.moves.slice(0, 5).map((move, index) => (
-          <li key={index}>{move.move.name}</li>
-        ))}
-      </ul>
+      <h3>Movimentos</h3>
+      <div 
+        style={{
+            fontSize: '14x',
+            fontWeight: 'unset',
+            marginTop: '0.5rem'
+        }}>
+        <ul style={{listStyle: 'none'}}>
+            {pokemon.moves.slice(0, 5).map((move, index) => (
+            <li key={index}>{move.move.name}</li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };

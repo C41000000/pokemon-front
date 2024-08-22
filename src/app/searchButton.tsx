@@ -17,7 +17,6 @@ const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
             borderRadius: '0.5rem',
             border: '1px solid',
             marginTop: '1rem'
-            
         }}>
       Buscar Pokemons
     </button>
