@@ -18,11 +18,28 @@ interface Sprite {
 
 interface Pokemon {
   name: string;
-  moves: Move[];
+  moves: { [key: string]: Move };
   sprites: Sprite;
 }
+const customScrollStyles = {
+  '&::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    background: '#f1f1f1',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    background: '#888', 
+    borderRadius: '4px',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    background: '#555', 
+  },
+};
 
 const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
+  const moveEntries = Object.entries(pokemon.moves).slice(0, 3);
+
   return (
     <Card 
       sx={{ 
@@ -50,6 +67,7 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
             style={{ width: '100px', height: '100px' }} 
           />
         </Box>
+        <hr></hr>
         <Typography variant="h6" component="div">
           Moves
         </Typography>
@@ -57,11 +75,12 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
           sx={{
             padding: '1.5rem',
             overflow: 'auto', 
-            maxHeight: '9rem' 
+            maxHeight: '9rem',
+            ...customScrollStyles
           }}   
         >
           <List>
-            {pokemon.moves.slice(0, 5).map((move, index) => (
+            {moveEntries.map(([url, move], index) => (
               <ListItem key={index} disablePadding>
                 <ListItemText 
                   primary={<b>{move.move.name}</b>} 
@@ -71,7 +90,6 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
             ))}
           </List>
         </Box>
-
       </CardContent>
     </Card>
   );

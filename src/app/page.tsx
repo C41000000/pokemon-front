@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Container, Grid, Paper, Typography, Box } from '@mui/material';
+import { Container, Grid, Paper, Box } from '@mui/material';
 import SearchButton from './searchButton';
 import PokemonCard from './pokemonCard';
 
@@ -9,179 +9,13 @@ const App: React.FC = () => {
 
   const fetchPokemons = async () => {
     try {
-      const response = [
-        {
-          name: "Pikachu",
-          sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          },
-          moves: [
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-          ]
-        },
-        {
-          name: "Pikachu",
-          sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          },
-          moves: [
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-          ]
-        },
-        {
-          name: "Pikachu",
-          sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          },
-          moves: [
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-          ]
-        },
-        {
-          name: "Pikachu",
-          sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          },
-          moves: [
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-          ]
-        },
-        {
-          name: "Pikachu",
-          sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          },
-          moves: [
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-          ]
-        },
-        {
-          name: "Pikachu",
-          sprites: {
-            front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          },
-          moves: [
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-            {
-              move: {
-                name: "Thunder Shock",
-                effect_entries: [
-                  {
-                    short_effect: "Has a 10% chance to paralyze the target."
-                  }
-                ]
-              }
-            },
-          ]
-        }
-      ];
-      // let test = await fetch('http://0.0.0.0:9501/pokemon/list');
 
-      setPokemons(response);
+      let response = await fetch('http://localhost:9501/pokemon/list');
+      
+      if(response.ok){
+        let data = await response.json()
+        setPokemons(data.list);
+      }
     } catch (error) {
       console.error('Erro ao buscar Pokémons:', error);
     }
@@ -199,9 +33,6 @@ const App: React.FC = () => {
         <Paper elevation={3} 
           sx={{ padding: '2rem', 
             maxWidth: '90vw', 
-            // minWidth: '60vw', 
-            // minHeight: '90vh', 
-
           }}>
           <Box textAlign="center">
             <SearchButton onClick={fetchPokemons} />
