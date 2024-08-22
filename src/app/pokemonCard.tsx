@@ -37,7 +37,7 @@ const customScrollStyles = {
   },
 };
 
-const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
+  const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
   const moveEntries = Object.entries(pokemon.moves).slice(0, 3);
 
   return (
@@ -51,7 +51,7 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
         minHeight: '35vh',
         '&:hover': {
           transform: 'scale(1.05)',
-          background: '#e0e0e0',
+          background: '#F5FDFF',
           cursor: 'pointer',
         },  
       }}
