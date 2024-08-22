@@ -1,15 +1,13 @@
-
 import React from 'react';
 
-interface Ability {
-  ability: {
-    name: string;
-  };
+interface EffectEntries {
+  short_effect: string;
 }
 
 interface Move {
   move: {
     name: string;
+    effect_entries: EffectEntries[];
   };
 }
 
@@ -37,16 +35,18 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
         }}>
       <h2>{pokemon.name}</h2>
       <img src={pokemon.sprites.front_default} alt={pokemon.name} style={{ width: '100px', height: '100px' }} />
-      <h3>Movimentos</h3>
+  
       <div 
         style={{
-            fontSize: '14x',
+            fontSize: '14px',  
             fontWeight: 'unset',
             marginTop: '0.5rem'
         }}>
         <ul style={{listStyle: 'none'}}>
             {pokemon.moves.slice(0, 5).map((move, index) => (
-            <li key={index}>{move.move.name}</li>
+            <li key={index}>
+              <b>{move.move.name}</b>: {move.move.effect_entries[0]?.short_effect || 'Sem efeitos'}
+            </li>
             ))}
         </ul>
       </div>
