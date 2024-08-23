@@ -38,7 +38,7 @@ const customScrollStyles = {
 };
 
   const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
-  const moveEntries = Object.entries(pokemon.moves).slice(0, 3);
+  const moveEntries = Object.entries(pokemon.moves).slice(0, 5);
 
   return (
     <Card 
